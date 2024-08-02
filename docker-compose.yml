@@ -1,0 +1,18 @@
+services:
+  xttsrvc:
+    container_name: 'xtts-rvc-ui'
+    image: 'ericlacasse/xtts-rvc-ui:main'
+    tty: true
+    ports:
+      - "5000:5000"
+    volumes:
+      - xttsrvc:/home/xttsrvc/XTTS-RVC-UI
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+volumes:
+  xttsrvc:
